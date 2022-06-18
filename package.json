@@ -20,6 +20,11 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "homepage": "https://VerseVent.github.io/react_project_1/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VerseVent/react_project_1.git"
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
