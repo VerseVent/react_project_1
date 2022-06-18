@@ -1,0 +1,113 @@
+/* CSS */
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+body{
+    font-family: 'Josefin Sans', sans-serif;
+    // background-color: rgba(236, 162, 255, 0.582);
+    margin-top: 30px;
+}
+.content-container{
+    width: 65%;
+    min-height: 400px;
+    padding: 50px;
+    border-radius: 30px;
+    // margin-top: 40px;
+    background-color: rgba(83, 255, 132, 0.6);
+    box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 0.7);
+}
+.container{
+    margin: 0 auto;
+    text-align: center;
+
+}
+.disable-margins{
+    margin: 0 auto;
+    padding: 0;
+}
+.current-activity{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70px;
+    // padding: 20px;
+}
+.lists-container{
+    display: flex;
+    justify-content: center;
+    .activity-list{
+        width: 300px;
+        list-style: none;
+        text-align: left;
+        // border: 1px solid #000000;
+    }
+}
+.activity-item{
+    margin-bottom: 20px;
+}
+.controls{
+    display: flex;
+    justify-content: center;
+}
+
+.button-3 {
+    appearance: none;
+    margin: 10px;
+    width: 120px;
+    background-color: #2ea44f;
+    border: 1px solid rgba(27, 31, 35, .15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 20px;
+    padding: 6px 16px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+
+.button-3:focus:not(:focus-visible):not(.focus-visible) {
+    box-shadow: none;
+    outline: none;
+}
+
+.button-3:hover {
+    background-color: #2c974b;
+}
+
+.button-3--negative {
+    background-color: rgb(252, 87, 87);
+}
+
+.button-3--negative:hover {
+    background-color: #db3a3a;
+}
+
+.button-3:focus {
+    box-shadow: rgba(46, 164, 79, .4) 0 0 0 3px;
+    outline: none;
+}
+
+.button-3:disabled {
+    background-color: #94d3a2;
+    border-color: rgba(27, 31, 35, .1);
+    color: rgba(255, 255, 255, .8);
+    cursor: default;
+}
+
+.button-3:active {
+    background-color: #298e46;
+    box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
+}
+.button-3--negative:active{
+    background-color: #ff1515;
+}
