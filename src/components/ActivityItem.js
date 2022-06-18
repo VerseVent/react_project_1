@@ -1,3 +1,5 @@
+import React, { Component } from "react";
+
 export function ActivityItem({ activityList }) {
   if (!activityList) {
     return;

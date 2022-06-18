@@ -1,3 +1,4 @@
+import React, { Component } from "react";
 import { useState, useEffect } from "react";
 import fetchActivities from "../service/fetchActivities";
 import { ActivityItem } from "./ActivityItem";
