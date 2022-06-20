@@ -8,8 +8,8 @@ import "./index.scss";
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Login />} />
-      <Route path="activities" element={<MainBoard />} />
+      <Route path="/react_project_1" element={<Login />} />
+      <Route path="/activities" element={<MainBoard />} />
     </Routes>
   );
 }

@@ -3,40 +3,48 @@ import { useState, useEffect } from "react";
 import fetchActivities from "../service/fetchActivities";
 import { ActivityItem } from "./ActivityItem";
 import ReactLoading from "react-loading";
+import { ActivityList } from "./ActivityList";
 
 export function MainBoard() {
-  const [activities, setActivities] = useState({
-    positive: [],
-    negative: [],
-  });
   const [currentActivity, setCurrentActivity] = useState();
 
   const [isClicked, setIsClicked] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  const [positiveItems, setPositiveItems] = useState({});
+  const [negativeItems, setNegativeItems] = useState({});
 
   useEffect(() => {
-    setIsLoading(true);
-    setTimeout(() => {
-      fetchActivities()
-        .then((res) => setCurrentActivity(res.activity))
-        .finally(() => setIsLoading(false));
-    }, 300);
+    fetchActivities()
+      .then((res) => {
+        setCurrentActivity(res);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, [isClicked]);
-
   const guessAnswer = true;
+
+  function handleSetItem(res, setItem, items) {
+    const { activity, type } = res;
+    if (!items[type]) {
+      setItem((prevState) => ({ ...prevState, [type]: [activity] }));
+    } else {
+      setItem((prevState) => ({
+        ...prevState,
+        [type]: [...prevState[type], activity],
+      }));
+    }
+  }
 
   function handleActivitySelect(guessAnswer) {
     if (guessAnswer) {
-      setActivities({
-        positive: [...activities.positive, currentActivity],
-        negative: [...activities.negative],
-      });
+      handleSetItem(currentActivity, setPositiveItems, positiveItems);
+
       setIsClicked(!isClicked);
     } else {
-      setActivities({
-        positive: [...activities.positive],
-        negative: [...activities.negative, currentActivity],
-      });
+      handleSetItem(currentActivity, setNegativeItems, negativeItems);
 
       setIsClicked(!isClicked);
     }
@@ -54,7 +62,7 @@ export function MainBoard() {
             width={40}
           />
         ) : (
-          <p>{currentActivity}</p>
+          <p>{currentActivity.activity}</p>
         )}
       </div>
 
@@ -78,11 +86,11 @@ export function MainBoard() {
       <div className="lists-container">
         <ul className="activity-list">
           <h2>Selected activities</h2>
-          <ActivityItem activityList={activities.positive} />
+          <ActivityList typeLists={positiveItems} />
         </ul>
         <ul className="activity-list">
           <h2>Rejected activities</h2>
-          <ActivityItem activityList={activities.negative} />
+          <ActivityList typeLists={negativeItems} />
         </ul>
       </div>
     </div>
