@@ -7,6 +7,7 @@ import { ActivityList } from "./ActivityList";
 
 export function MainBoard() {
   const [currentActivity, setCurrentActivity] = useState();
+  const [prevActivities, setPrevActivities] = useState([]);
 
   const [isClicked, setIsClicked] = useState(false);
 
@@ -16,24 +17,33 @@ export function MainBoard() {
   const [negativeItems, setNegativeItems] = useState({});
 
   useEffect(() => {
-    fetchActivities()
-      .then((res) => {
+    fetchActivities().then((res) => {
+      setIsLoading(true);
+      if (
+        prevActivities.length !== 0 &&
+        prevActivities.includes(res.activity)
+      ) {
+        setIsClicked(!isClicked);
+      } else {
         setCurrentActivity(res);
-      })
-      .finally(() => {
+        setPrevActivities([...prevActivities, res.activity]);
         setIsLoading(false);
-      });
+      }
+    });
+    // .finally(() => {
+    // });
   }, [isClicked]);
   const guessAnswer = true;
 
   function handleSetItem(res, setItem, items) {
     const { activity, type } = res;
     if (!items[type]) {
+      console.log(items);
       setItem((prevState) => ({ ...prevState, [type]: [activity] }));
     } else {
       setItem((prevState) => ({
         ...prevState,
-        [type]: [...prevState[type], activity],
+        [type]: new Set([...prevState[type], activity]),
       }));
     }
   }

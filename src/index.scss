@@ -18,6 +18,15 @@ body{
     margin: -1px;
         
 }
+.activity-item__title{
+    // pointer-events: ;
+    cursor: pointer;
+    transform: scale(1);
+    transition: transform cubic-bezier(0.165, 0.84, 0.44, 1) 500ms;
+}
+.activity-item__title:hover{
+    transform: scale(1.2);
+}
 .type-list{
     padding: 0;
     margin: 0;
@@ -94,6 +103,9 @@ body{
     touch-action: manipulation;
     vertical-align: middle;
     white-space: nowrap;
+
+        transform: scale(1);
+            transition: transform cubic-bezier(0.165, 0.84, 0.44, 1) 500ms;
 }
 
 
@@ -104,6 +116,7 @@ body{
 
 .button-3:hover {
     background-color: #2c974b;
+    transform: scale(1.2);
 }
 
 .button-3--negative {
@@ -111,6 +124,7 @@ body{
 }
 
 .button-3--negative:hover {
+    transform: scale(1.2);
     background-color: #db3a3a;
 }
 
